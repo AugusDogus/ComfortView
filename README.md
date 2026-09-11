@@ -1,4 +1,6 @@
-# ComfortView Reforged
+<p align="center">
+  <img src="banner.png" alt="ComfortView Reforged: comfort ranges for Valheim" width="900">
+</p>
 
 See the space your comfort items cover in Valheim. Display colored range rings
 or translucent 3D spheres, then pin individual pieces to inspect their overlap.

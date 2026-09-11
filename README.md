@@ -1,32 +1,55 @@
-# ComfortView local fork
+# ComfortView Reforged
 
-Editable reconstruction of greymishka's ComfortView 1.0.0, decompiled with
-ILSpy 9.1.0.7988 from the user-downloaded Nexus DLL.
+See the space your comfort items cover in Valheim. Display colored range rings
+or translucent 3D spheres, then pin individual pieces to inspect their overlap.
 
-Source: https://www.nexusmods.com/valheim/mods/3589
+## Features
 
-Original DLL SHA-256:
-`f5c3e4de4fc992c61f4453f5c04d4fd1d303d49958f76c317ad2228960161df5`
+- Visualize the 10 m comfort radius around nearby furniture.
+- Switch between ground-level circles and 3D spheres.
+- Highlight an item's range by looking at it.
+- Show all nearby items, use the active-only filter, or choose specific types and pieces.
+- Discover comfort items from the running game's data, including newly eligible
+  and modded pieces, without maintaining a fixed item list.
 
-The source retains the original plugin ID, `mishka.valheim.comfortview`.
-This build replaces the original plugin when installed. Do not load both copies.
-Original authorship and distribution terms remain applicable; decompilation
-does not grant this reconstruction a new license.
+## Installation
+
+Requires Valheim and BepInEx 5.
+
+1. Build the project using the instructions below.
+2. Close Valheim.
+3. Place `ComfortView.dll` in your mod profile's
+   `BepInEx/plugins/ComfortViewReforged/` directory.
+4. Launch the game with that profile.
+
+Remove any original ComfortView DLL from the profile before installing.
+Reforged retains its plugin ID and config file, so the two versions cannot run together.
+
+The current build compiles against the installed Valheim assemblies but has not
+been tested in-game. Range displays assume the default 10 m comfort radius.
+
+## Controls
+
+| Key | Action |
+| --- | --- |
+| **F6** | Show or hide ranges |
+| **F7** | Open or close the selection menu |
+| **F8** | Pin or unpin the item you're looking at |
+| **Up / Down** | Move through menu rows |
+| **Right** | Select an item or change the highlighted option |
+| **Left / Right** | Switch Items / Nearby tabs when the tab row is selected |
+| **Escape** | Close the menu |
+
+**To see spheres:** press F7, highlight **Shape**, and press Right to select
+**Spheres**. Press F8 while looking at furniture to isolate its range.
+You can pin multiple items to compare their coverage.
+
+F6, F7, and F8 bindings can be changed in
+`BepInEx/config/mishka.valheim.comfortview.cfg`.
 
 ## Build
 
-Requires .NET SDK 8 or later, Valheim client assemblies, and BepInEx 5.
-The project defaults to the local Linux Steam install and r2modman's Default
-Valheim profile. It references those DLLs without copying them into the output.
-
-```sh
-dotnet build src/ComfortView.csproj -c Release
-```
-
-On this workstation the SDK executable is
-`/home/augie/.local/share/dotnet-sdk/dotnet`.
-
-Override paths for other installations:
+Requires .NET SDK 8 or later, the Valheim client, and BepInEx 5.
 
 ```sh
 dotnet build src/ComfortView.csproj -c Release \
@@ -34,36 +57,9 @@ dotnet build src/ComfortView.csproj -c Release \
   -p:BepInExDir="/path/to/profile/BepInEx"
 ```
 
-Output: `src/bin/Release/net472/ComfortView.dll`.
-Building does not install or launch the mod.
+The paths can be omitted for a standard Linux Steam install with r2modman's
+Default Valheim profile. Output: `src/bin/Release/net472/ComfortView.dll`.
 
-## Controls
+---
 
-- F6: show or hide ranges.
-- F7: open the selection menu. Up/Down selects a row; Right activates it.
-- F7, Shape row, Right: switch between Circles and Spheres.
-- F8: pin or unpin the looked-at comfort item and switch to picker mode.
-- Escape: close the menu.
-
-F8 does not enable spheres automatically. Select Spheres in the menu first.
-
-## Recovery changes and validation
-
-The project targets the original .NET Framework 4.7.2. Build recovery replaces
-temporary ILSpy reference paths, removes a decompiled compiler metadata
-attribute, and uses Unity's equivalent `Mathf.PI` constant because the standard
-.NET Framework reference assemblies do not expose `MathF`.
-The informational version is `1.0.0-local` instead of claiming the upstream
-commit hash. The plugin version remains 1.0.0.
-
-Release compilation is checked against the installed Valheim assemblies.
-In-game loading, rendering, and Valheim 1.0 behavior have not been verified.
-
-Comfort items are discovered from the game's registered pieces using their
-positive base comfort value, matching Valheim's comfort-piece registration.
-The menu, nearby ranges, and pin selection no longer filter by a fixed list of
-item names, so newly eligible and modded pieces can appear automatically.
-Temporarily inactive comfort pieces remain discoverable.
-
-Inherited behavior still includes a fixed 10 m comfort radius and the original
-active-only calculation. This change updates item discovery only.
+Based on [ComfortView by greymishka](https://www.nexusmods.com/valheim/mods/3589).

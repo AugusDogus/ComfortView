@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace ComfortView;
 
-[BepInPlugin("mishka.valheim.comfortview", "ComfortView", "1.0.0")]
+[BepInPlugin("mishka.valheim.comfortview", "ComfortView Reforged", "1.0.0")]
 public class ComfortViewPlugin : BaseUnityPlugin
 {
 	private enum DisplayMode
@@ -45,7 +45,7 @@ public class ComfortViewPlugin : BaseUnityPlugin
 
 	public const string PluginGUID = "mishka.valheim.comfortview";
 
-	public const string PluginName = "ComfortView";
+	public const string PluginName = "ComfortView Reforged";
 
 	public const string PluginVersion = "1.0.0";
 
@@ -538,7 +538,7 @@ public class ComfortViewPlugin : BaseUnityPlugin
 			verticalLayoutGroup.childForceExpandHeight = false;
 			verticalLayoutGroup.childAlignment = TextAnchor.UpperLeft;
 			obj.AddComponent<ContentSizeFitter>().verticalFit = ContentSizeFitter.FitMode.PreferredSize;
-			CreateText(component, "Comfort View", TextAlignmentOptions.Left, 15f, Color.white);
+			CreateText(component, "ComfortView Reforged", TextAlignmentOptions.Left, 15f, Color.white);
 			CreateText(component, "Up/Down move * Right select/pin/toggle * Esc close", TextAlignmentOptions.Left, 9f, new Color(0.8f, 0.8f, 0.8f));
 			modeTexts = new TMP_Text[2];
 			for (int i = 0; i < modeTexts.Length; i++)

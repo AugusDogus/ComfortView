@@ -4,6 +4,6 @@ using System.Reflection;
 [assembly: AssemblyConfiguration("Release")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 [assembly: AssemblyInformationalVersion("1.0.0-local")]
-[assembly: AssemblyProduct("ComfortView")]
-[assembly: AssemblyTitle("ComfortView")]
+[assembly: AssemblyProduct("ComfortView Reforged")]
+[assembly: AssemblyTitle("ComfortView Reforged")]
 [assembly: AssemblyVersion("1.0.0.0")]

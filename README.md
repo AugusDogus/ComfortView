@@ -14,6 +14,22 @@ or translucent 3D spheres, then pin individual pieces to inspect their overlap.
 - Discover comfort items from the running game's data, including newly eligible
   and modded pieces, without maintaining a fixed item list.
 
+## Screenshots
+
+From [the original ComfortView by greymishka](https://www.nexusmods.com/valheim/mods/3589?tab=images).
+
+**Item picker and comfort ranges**
+
+![Original ComfortView item picker with comfort categories and colored range overlays](screenshots/original-item-picker.webp)
+
+**Nearby furniture and distances**
+
+![Original ComfortView Nearby tab listing furniture and its distance from the player](screenshots/original-nearby-items.webp)
+
+**Highlighting an item's range**
+
+![Original ComfortView highlighting a rug with a green marker and range outline](screenshots/original-hover-highlight.webp)
+
 ## Installation
 
 Requires Valheim and BepInEx 5.

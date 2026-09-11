@@ -59,6 +59,11 @@ commit hash. The plugin version remains 1.0.0.
 Release compilation is checked against the installed Valheim assemblies.
 In-game loading, rendering, and Valheim 1.0 behavior have not been verified.
 
-Inherited behavior still includes a fixed 10 m comfort radius and a hardcoded
-furniture allowlist. That list excludes item stands and can miss newer or modded
-comfort pieces. This is a recovered baseline, with no gameplay fixes applied.
+Comfort items are discovered from the game's registered pieces using their
+positive base comfort value, matching Valheim's comfort-piece registration.
+The menu, nearby ranges, and pin selection no longer filter by a fixed list of
+item names, so newly eligible and modded pieces can appear automatically.
+Temporarily inactive comfort pieces remain discoverable.
+
+Inherited behavior still includes a fixed 10 m comfort radius and the original
+active-only calculation. This change updates item discovery only.

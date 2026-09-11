@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>ComfortView</AssemblyName>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>12</LangVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GameDir Condition="'$(GameDir)' == ''">$(HOME)/.local/share/Steam/steamapps/common/Valheim</GameDir>
+    <BepInExDir Condition="'$(BepInExDir)' == ''">$(HOME)/.config/r2modmanPlus-local/Valheim/profiles/Default/BepInEx</BepInExDir>
+    <ManagedDir>$(GameDir)/valheim_Data/Managed</ManagedDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+    <Reference Include="$(BepInExDir)/core/BepInEx.dll" Private="false" />
+    <Reference Include="$(ManagedDir)/assembly_valheim.dll" Private="false" />
+    <Reference Include="$(ManagedDir)/assembly_guiutils.dll" Private="false" />
+    <Reference Include="$(ManagedDir)/Unity.TextMeshPro.dll" Private="false" />
+    <Reference Include="$(ManagedDir)/UnityEngine.dll" Private="false" />
+    <Reference Include="$(ManagedDir)/UnityEngine.CoreModule.dll" Private="false" />
+    <Reference Include="$(ManagedDir)/UnityEngine.PhysicsModule.dll" Private="false" />
+    <Reference Include="$(ManagedDir)/UnityEngine.InputLegacyModule.dll" Private="false" />
+    <Reference Include="$(ManagedDir)/UnityEngine.UIModule.dll" Private="false" />
+    <Reference Include="$(ManagedDir)/UnityEngine.UI.dll" Private="false" />
+    <Reference Include="$(ManagedDir)/UnityEngine.TextRenderingModule.dll" Private="false" />
+  </ItemGroup>
+  <Target Name="ValidateGameReferences" BeforeTargets="ResolveReferences">
+    <Error Condition="!Exists('$(ManagedDir)/assembly_valheim.dll')" Text="Valheim assemblies were not found in $(ManagedDir). Set GameDir to your Valheim client installation." />
+    <Error Condition="!Exists('$(BepInExDir)/core/BepInEx.dll')" Text="BepInEx was not found in $(BepInExDir). Set BepInExDir to your mod profile's BepInEx directory." />
+  </Target>
+</Project>

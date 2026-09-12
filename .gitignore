@@ -6,8 +6,6 @@
 TestResults/
 *.binlog
 *.log
-__pycache__/
-*.pyc
 
 # Local configuration and editors
 Environment.props

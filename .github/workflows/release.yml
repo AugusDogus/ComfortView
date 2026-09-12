@@ -26,6 +26,15 @@ jobs:
         with:
           dotnet-version: 8.0.x
 
+      - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+        with:
+          bun-version: 1.4.1
+      - name: Check release tooling
+        run: |
+          bun install --frozen-lockfile
+          bun run typecheck
+          bun test tests/
+
       - name: Install SteamCMD
         run: |
           sudo apt-get update
@@ -71,20 +80,11 @@ jobs:
       - name: Check plugin behavior and game compatibility
         run: bash scripts/check.sh
 
-      - name: Check package validation
-        run: python3 -m unittest discover -s tests -p 'test_*.py'
-
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
-        with:
-          node-version: 22
-      - name: Check version updates
-        run: node --test tests/release-version.test.mjs
-
       - name: Validate package and release version
         id: package
         env:
           RELEASE_TAG: ${{ github.event_name == 'push' && startsWith(github.ref, 'refs/tags/') && github.ref_name || '' }}
-        run: python3 scripts/validate-package.py
+        run: bun run scripts/validate-package.ts
 
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:

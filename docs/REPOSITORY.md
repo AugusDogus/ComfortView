@@ -19,6 +19,8 @@ docs/                         Development and repository documentation
 <Mod>.sln                     Solution entry point
 Directory.Build.props         Shared local game-reference paths
 global.json                   .NET 8 SDK selection
+package.json / bun.lock       Pinned Bun release-tool dependencies
+tsconfig.json                 Strict TypeScript checks for release tooling
 bump.config.mjs               Reviewed version commit and tag creation
 thunderstore.toml             Thunderstore publication settings
 README.md                     Player-facing overview, setup, controls, build link
@@ -36,7 +38,7 @@ keeps it synchronized with the project, manifest, and assembly attributes.
 Package names, assembly names, and plugin IDs may differ for compatibility.
 
 Keep `release.yml`, `Package.targets`, the release scripts and their tests,
-`global.json`, and `bump.config.mjs` identical across repositories. Extend
+`package.json`, `bun.lock`, `tsconfig.json`, `global.json`, and `bump.config.mjs` identical across repositories. Extend
 `scripts/check.sh` for the mod's actual tests. No shared private workflow access
 or runtime dependency on another repository is required.
 

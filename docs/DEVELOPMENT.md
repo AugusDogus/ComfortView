@@ -2,7 +2,9 @@
 
 ## Build
 
-Install .NET SDK 8 and Python 3.10 or newer. Use your Valheim installation and BepInEx 5 profile:
+Install .NET SDK 8 and Bun 1.4.1 or newer. Run `bun install --frozen-lockfile`
+from the repository root to install the release tooling. Use your Valheim
+installation and BepInEx 5 profile:
 
 ```sh
 dotnet build src/ComfortView/ComfortView.csproj -c Release \
@@ -33,15 +35,15 @@ After building, run the mod's checks with the same references:
 ```sh
 MANAGED_DIR="/path/to/Valheim/valheim_Data/Managed" \
 BEPINEX_DIR="/path/to/profile/BepInEx" bash scripts/check.sh
-python3 -m unittest discover -s tests -p 'test_*.py'
-bun test tests/release-version.test.mjs
+bun run typecheck
+bun test tests/
 ```
 
-The version tests also run with `node --test tests/release-version.test.mjs`.
+The TypeScript package checks and JavaScript version checks use Bun's test runner.
 
 ## Package
 
-Add `-t:Package` to the Release build command. Python creates and validates
+Add `-t:Package` to the Release build command. The TypeScript script creates and validates
 `artifacts/<PackageName>-<Version>.zip`. Import this ZIP with r2modman's
 **Import local mod**. Build and package commands do not install or publish anything.
 

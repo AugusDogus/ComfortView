@@ -12,7 +12,7 @@ keep runtime code, dependencies, tests, artwork, and licensing specific to the m
 src/<Mod>/                    Plugin.cs, project, runtime code and resources
 tests/                        Mod checks and release-tool regression tests
 package/                      Thunderstore manifest, icon, banner, screenshots
-assets/                       Editable artwork and optional Unity projects
+assets/                       Editable artwork and required asset sources
 build/Package.targets         Shared dotnet build -t:Package entry point
 scripts/                      Package validation, version updates, mod checks
 docs/                         Development and repository documentation
@@ -29,8 +29,9 @@ LICENSE.md                    Existing project license, when one is declared
 ```
 
 `artifacts/`, `bin/`, `obj/`, downloaded dependencies, and `Environment.props`
-are local outputs. Never commit game assemblies or tokens. `legacy/` is optional
-for inherited code and tools excluded from the current build.
+are local outputs. Never commit game assemblies or tokens. Keep only maintained
+source, required assets, and current tooling. Git history preserves removed
+upstream files; do not keep unused code or promotional artwork in a legacy folder.
 
 Use one plugin project under `src/<Mod>/` and keep its entry point in `Plugin.cs`.
 The public `PluginVersion` constant supplies `BepInPlugin`; the version updater

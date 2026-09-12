@@ -1,5 +1,9 @@
 # Repository convention
 
+Start new mods from [ValheimModTemplate](https://github.com/AugusDogus/ValheimModTemplate/blob/main/docs/TEMPLATE.md).
+Its `dotnet new valheim-mod -n MyMod` command generates this layout with the
+project and plugin identities renamed.
+
 Each mod is an independent repository. Share this layout and build plumbing;
 keep runtime code, dependencies, tests, artwork, and licensing specific to the mod.
 

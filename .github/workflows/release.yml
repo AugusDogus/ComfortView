@@ -40,10 +40,21 @@ jobs:
 
       - name: Download game and BepInEx references
         run: |
-          "$RUNNER_TEMP/steamcmd/steamcmd.sh" \
-            +force_install_dir "$RUNNER_TEMP/valheim" \
-            +login anonymous +app_update 896660 validate +quit
-          test -f "$MANAGED_DIR/assembly_valheim.dll"
+          # A cold SteamCMD app-info cache can fail with "Missing configuration".
+          for attempt in 1 2 3; do
+            if "$RUNNER_TEMP/steamcmd/steamcmd.sh" \
+              +force_install_dir "$RUNNER_TEMP/valheim" \
+              +login anonymous +app_update 896660 validate +quit \
+              && test -f "$MANAGED_DIR/assembly_valheim.dll"; then
+              break
+            fi
+            if [[ "$attempt" == 3 ]]; then
+              echo "::error::SteamCMD could not download Valheim app 896660 after three attempts. See the SteamCMD errors above, then rerun the job. No package was published."
+              exit 1
+            fi
+            echo "SteamCMD download attempt $attempt failed; retrying in 5 seconds."
+            sleep 5
+          done
           bepinex_version=$(jq -er '.dependencies[] | select(startswith("denikson-BepInExPack_Valheim-")) | ltrimstr("denikson-BepInExPack_Valheim-")' package/manifest.json)
           curl --fail --location --retry 3 \
             "https://thunderstore.io/package/download/denikson/BepInExPack_Valheim/$bepinex_version/" \

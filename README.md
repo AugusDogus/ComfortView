@@ -43,8 +43,7 @@ Requires Valheim and BepInEx 5.
 Remove any original ComfortView DLL from the profile before installing.
 Reforged retains its plugin ID and config file, so the two versions cannot run together.
 
-The current build compiles against the installed Valheim assemblies but has not
-been tested in-game. Range displays assume the default 10 m comfort radius.
+Tested in-game with Valheim. Range displays assume the default 10 m comfort radius.
 
 ## Controls
 

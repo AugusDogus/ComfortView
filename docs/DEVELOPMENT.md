@@ -50,7 +50,9 @@ Add `-t:Package` to the Release build command. The TypeScript script creates and
 `package/manifest.json` defines the Thunderstore identity and dependencies.
 Only the plugin DLL, package assets, README, changelog, and available license
 notices enter the ZIP. Game, BepInEx, and NuGet dependency DLLs are excluded.
-README links are adjusted during packaging so local images still resolve.
+README image links use raw GitHub URLs pinned to the package version tag.
+The repository and that tag must be public for Thunderstore to display images;
+bundling images in the ZIP alone does not host them on the mod page.
 
 ## GitHub Actions
 

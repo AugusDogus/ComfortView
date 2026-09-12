@@ -26,7 +26,7 @@ function fixture() {
     'package/manifest.json': JSON.stringify(manifest),
     'package/icon.png': icon,
     'package/banner.png': 'banner',
-    'README.md': '<img src="package/banner.png">\n[Development](docs/DEVELOPMENT.md)\n[Controls](#controls)',
+    'README.md': '<img src="package/banner.png">\n![Screenshot](package/screenshots/example.webp)\n![External](https://example.com/image.png)\n[Development](docs/DEVELOPMENT.md)\n[Controls](#controls)',
     'src/Example/Example.csproj': '<Project><PropertyGroup><Version>1.2.3</Version><TargetFramework>net8.0</TargetFramework></PropertyGroup></Project>',
     'src/Example/Plugin.cs': '[BepInPlugin(PluginId, "Example", PluginVersion)]\npublic const string PluginVersion = "1.2.3";',
     'src/Example/Properties/AssemblyInfo.cs': '[assembly: AssemblyVersion("1.2.3.0")]\n[assembly: AssemblyFileVersion("1.2.3.0")]',
@@ -53,7 +53,9 @@ test('packages only the mod and resolves README links', async () => {
     const readme = entries.find(entry => entry.filename === 'README.md');
     if (!readme || readme.directory) throw new Error('Package must contain README.md.');
     const text = Buffer.from(await readme.getData(new Uint8ArrayWriter())).toString();
-    expect(text).toContain('src="banner.png"');
+    expect(text).toContain('src="https://raw.githubusercontent.com/example/Example/v1.2.3/package/banner.png"');
+    expect(text).toContain('![Screenshot](https://raw.githubusercontent.com/example/Example/v1.2.3/package/screenshots/example.webp)');
+    expect(text).toContain('![External](https://example.com/image.png)');
     expect(text).toContain('https://github.com/example/Example/blob/main/docs/DEVELOPMENT.md');
     expect(text).toContain('[Controls](#controls)');
   } finally {

@@ -86,11 +86,14 @@ function packageFiles(root: string, info: ReturnType<typeof metadata>) {
     files.set(name.replaceAll('\\', '/'), readFileSync(join(packageDir, name)));
   }
   function link(_match: string, prefix: string, target: string, suffix: string) {
-    if (target.startsWith('package/')) target = target.slice('package/'.length);
+    if (target.startsWith('package/')) {
+      const repository = info.website.slice('https://github.com/'.length);
+      target = `https://raw.githubusercontent.com/${repository}/v${info.version}/${target}`;
+    }
     else if (!/^(?:[a-z]+:|#|\/)/.test(target)) target = `${info.website}/blob/main/${target}`;
     return prefix + target + suffix;
   }
-  // Keep one README source for both GitHub and the package page.
+  // Thunderstore does not serve bundled images; use the release tag's public files.
   const readme = readFileSync(join(root, 'README.md'), 'utf8')
     .replace(/(\]\()([^\s)]+)(\))/g, link).replace(/(src=")([^"]+)(")/g, link);
   files.set('README.md', Buffer.from(readme));

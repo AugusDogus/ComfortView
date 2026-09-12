@@ -47,7 +47,7 @@ public class ComfortViewPlugin : BaseUnityPlugin
 
 	public const string PluginName = "ComfortView Reforged";
 
-	public const string PluginVersion = "1.0.0";
+	public const string PluginVersion = "1.0.1";
 
 	private const float ComfortRadius = 10f;
 

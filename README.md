@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="banner.png" alt="ComfortView Reforged: comfort ranges for Valheim" width="900">
+  <img src="package/banner.png" alt="ComfortView Reforged: comfort ranges for Valheim" width="900">
 </p>
 
 See the space your comfort items cover in Valheim. Display colored range rings
@@ -20,21 +20,21 @@ From [the original ComfortView by greymishka](https://www.nexusmods.com/valheim/
 
 **Item picker and comfort ranges**
 
-![Original ComfortView item picker with comfort categories and colored range overlays](screenshots/original-item-picker.webp)
+![Original ComfortView item picker with comfort categories and colored range overlays](package/screenshots/original-item-picker.webp)
 
 **Nearby furniture and distances**
 
-![Original ComfortView Nearby tab listing furniture and its distance from the player](screenshots/original-nearby-items.webp)
+![Original ComfortView Nearby tab listing furniture and its distance from the player](package/screenshots/original-nearby-items.webp)
 
 **Highlighting an item's range**
 
-![Original ComfortView highlighting a rug with a green marker and range outline](screenshots/original-hover-highlight.webp)
+![Original ComfortView highlighting a rug with a green marker and range outline](package/screenshots/original-hover-highlight.webp)
 
 ## Installation
 
 Requires Valheim and BepInEx 5.
 
-1. Build the project using the instructions below.
+1. Download a ZIP from [Releases](https://github.com/AugusDogus/ComfortView/releases) or [Actions](https://github.com/AugusDogus/ComfortView/actions), or build it below.
 2. Close Valheim.
 3. Place `ComfortView.dll` in your mod profile's
    `BepInEx/plugins/ComfortViewReforged/` directory.
@@ -67,16 +67,17 @@ F6, F7, and F8 bindings can be changed in
 
 ## Build
 
-Requires .NET SDK 8 or later, the Valheim client, and BepInEx 5.
+Requires .NET SDK 8, the Valheim client, and BepInEx 5.
 
 ```sh
-dotnet build src/ComfortView.csproj -c Release \
+dotnet build src/ComfortView/ComfortView.csproj -c Release \
   -p:GameDir="/path/to/Valheim" \
   -p:BepInExDir="/path/to/profile/BepInEx"
 ```
 
-The paths can be omitted for a standard Linux Steam install with r2modman's
-Default Valheim profile. Output: `src/bin/Release/net472/ComfortView.dll`.
+GameDir defaults to a standard Steam installation. Set BepInExDir for your mod profile. Output: `src/ComfortView/bin/Release/net472/ComfortView.dll`.
+
+[Development and releases](docs/DEVELOPMENT.md) · [Repository layout](docs/REPOSITORY.md) · [Changelog](CHANGELOG.md)
 
 ---
 

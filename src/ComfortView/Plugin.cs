@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 namespace ComfortView;
 
-[BepInPlugin("mishka.valheim.comfortview", "ComfortView Reforged", "1.0.0")]
+[BepInPlugin("mishka.valheim.comfortview", "ComfortView Reforged", PluginVersion)]
 public class ComfortViewPlugin : BaseUnityPlugin
 {
 	private enum DisplayMode

@@ -4,9 +4,7 @@
     <TargetFramework>net472</TargetFramework>
     <LangVersion>12</LangVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <GameDir Condition="'$(GameDir)' == ''">$(HOME)/.local/share/Steam/steamapps/common/Valheim</GameDir>
-    <BepInExDir Condition="'$(BepInExDir)' == ''">$(HOME)/.config/r2modmanPlus-local/Valheim/profiles/Default/BepInEx</BepInExDir>
-    <ManagedDir>$(GameDir)/valheim_Data/Managed</ManagedDir>
+    <Version>1.0.0</Version>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
@@ -26,4 +24,5 @@
     <Error Condition="!Exists('$(ManagedDir)/assembly_valheim.dll')" Text="Valheim assemblies were not found in $(ManagedDir). Set GameDir to your Valheim client installation." />
     <Error Condition="!Exists('$(BepInExDir)/core/BepInEx.dll')" Text="BepInEx was not found in $(BepInExDir). Set BepInExDir to your mod profile's BepInEx directory." />
   </Target>
+  <Import Project="../../build/Package.targets" />
 </Project>

@@ -1,0 +1,9 @@
+* text=auto
+*.cs text diff=csharp
+*.sh text eol=lf
+*.py text eol=lf
+*.yml text eol=lf
+*.png binary
+*.jpg binary
+*.webp binary
+*.dll binary

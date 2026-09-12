@@ -1,4 +1,29 @@
-**/bin/
-**/obj/
-*.user
+# Build output and downloaded dependencies
+**/[Bb]in/
+**/[Oo]bj/
+/artifacts/
+/dependencies/
+TestResults/
+*.binlog
+*.log
+__pycache__/
+*.pyc
+
+# Local configuration and editors
+Environment.props
+.env
+.env.*
+!.env.example
 .vs/
+.idea/
+*.user
+*.suo
+*.userprefs
+*.DotSettings.user
+node_modules/
+
+# Unity local state
+**/[Ll]ibrary/
+**/[Tt]emp/
+**/[Ll]ogs/
+**/[Uu]ser[Ss]ettings/

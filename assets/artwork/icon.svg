@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="58 60 280 280">
+<title>ComfortView Reforged</title>
+<rect x="58" y="60" width="280" height="280" fill="#213d36"/>
+<g fill="none" stroke="#78978a" stroke-width="2" opacity="0.65">
+    <circle cx="198" cy="200" r="120"/>
+    <ellipse cx="198" cy="200" rx="120" ry="42"/>
+    <ellipse cx="198" cy="200" rx="46" ry="120"/>
+  </g>
+<g stroke="#213d36" stroke-width="5" stroke-linejoin="miter">
+    <path fill="#172e29" d="M127 265V184L148 155H248L269 184V265Z"/>
+    <path fill="#b4c2b4" d="M127 265V212H158V265Z M127 207V176L154 148L175 173L158 192V207Z M160 148H236V174H160Z M242 148L269 176V207H238V192L221 173Z M238 212H269V265Z"/>
+    <path fill="#d2cfb1" d="M119 266H277V286H119Z"/>
+    <path fill="#d69b58" d="M179 253C155 240 170 215 182 204C181 219 188 223 191 222C197 208 188 195 204 178C200 207 228 215 228 232C228 246 216 257 200 257Z"/>
+    <path fill="#f1dfb7" stroke="none" d="M189 250C180 242 189 233 195 224C195 233 205 235 204 225C220 245 207 255 198 255Z"/>
+  </g>
+</svg>

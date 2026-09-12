@@ -64,7 +64,7 @@ The workflow runs `scripts/check.sh`, package tests, and version tests, then
 uploads the validated ZIP as `thunderstore-package`. Tag pushes additionally
 create a GitHub release and publish that same ZIP with [Thunderstore CLI](https://github.com/thunderstore-io/thunderstore-cli).
 The publishing token is passed only to the publish step. Branch pushes, pull requests,
-and manual runs only build and check.
+and manual runs without a release tag only build and check.
 
 Repository Actions settings:
 
@@ -89,7 +89,10 @@ are never overwritten. Check `git remote -v` before pushing from an old checkout
 that also has an upstream remote.
 
 Tags must match the source versions exactly. Prerelease tags are not published.
-Creating a release manually on GitHub does not trigger publishing.
+Creating a release manually on GitHub does not trigger publishing. To retry an
+existing version with the current workflow, run **Build and publish** from `main`
+and set `release_tag` to its existing tag (for example, `v1.0.0`). This checks out
+and validates that tag before publishing; the tag is never moved.
 If Thunderstore publishing fails, the ZIP remains on the GitHub release.
 Correct credentials or settings and rerun the failed job. If the version is
 already published on Thunderstore, release a new version.

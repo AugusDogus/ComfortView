@@ -81,3 +81,11 @@ GameDir defaults to a standard Steam installation. Set BepInExDir for your mod p
 ---
 
 Based on [ComfortView by greymishka](https://www.nexusmods.com/valheim/mods/3589).
+
+## License
+
+Original AugusDogus contributions are licensed under [MIT](LICENSE.md).
+The inherited ComfortView implementation and original screenshots are excluded:
+their redistribution and relicensing permissions have not been verified.
+See [third-party notices](package/THIRD-PARTY-NOTICES.md). The combined plugin
+is not represented as wholly MIT-licensed.

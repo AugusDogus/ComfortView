@@ -11,7 +11,7 @@ keep runtime code, dependencies, tests, artwork, and licensing specific to the m
 .github/workflows/release.yml  Build, check, and publish version tags
 src/<Mod>/                    Plugin.cs, project, runtime code and resources
 tests/                        Mod checks and release-tool regression tests
-package/                      Thunderstore manifest, icon, banner, screenshots
+package/                      Manifest, artwork, and applicable third-party notices
 assets/                       Editable artwork and required asset sources
 build/Package.targets         Shared dotnet build -t:Package entry point
 scripts/                      Package validation, version updates, mod checks
@@ -25,7 +25,7 @@ bump.config.mjs               Reviewed version commit and tag creation
 thunderstore.toml             Thunderstore publication settings
 README.md                     Player-facing overview, setup, controls, build link
 CHANGELOG.md                  Release history
-LICENSE.md                    Existing project license, when one is declared
+LICENSE.md                    MIT for original contributions; scoped where needed
 ```
 
 `artifacts/`, `bin/`, `obj/`, downloaded dependencies, and `Environment.props`
@@ -46,3 +46,10 @@ or runtime dependency on another repository is required.
 The root README is the source for both GitHub and the package page. Keep artwork
 under `package/` and link developer details under `docs/`; packaging adjusts
 those links. Retain existing attribution and licenses when starting from a fork.
+
+Use MIT for original AugusDogus code with a dated copyright notice. Preserve
+upstream authors, copyright years, license terms, and font notices. Adding
+MIT does not relicense inherited material. Put applicable third-party terms
+in `package/THIRD-PARTY-NOTICES.md` so they are included in release ZIPs.
+If upstream permissions are unknown, state that explicitly and limit the
+MIT grant to original contributions.

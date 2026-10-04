@@ -7,3 +7,5 @@ using System.Reflection;
 [assembly: AssemblyProduct("ComfortView Reforged")]
 [assembly: AssemblyTitle("ComfortView Reforged")]
 [assembly: AssemblyVersion("1.0.1.0")]
+
+[assembly: AssemblyCopyright("Copyright (c) 2026 AugusDogus (original contributions)")]
